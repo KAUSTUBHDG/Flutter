@@ -1,15 +1,16 @@
-import 'dart:ffi';
-
-
 
 class Transaction
 {
   String title;
   String from;
   String to;
-  Float cost;
-  DateTime dateTime;
+  double cost;
+ // DateTime dateTime;
+  DateTime id;
+  // final Function validator;
+  // final Function onSaved;
 
-  Transaction({this.title,this.from,this.to,this.cost,this.dateTime});
+  Transaction({this.title,this.from,this.to,this.cost,/*this.dateTime,*/this.id/*,this.onSaved*/});
 
 }
+

@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'transactionList.dart';
+//import 'package:sExpense/transactionList.dart';
+// import 'package:flutter/services.dart';
+import 'transaction.dart';
+import 'new_transaction.dart';
+//import 'transactionList.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -22,124 +27,66 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+   List<Transaction> userTransactions = [];
+
+  
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.all(2),
-          children: <Widget>[
-            
-            DrawerHeader(
-              child:Text('Options'),
-              decoration: BoxDecoration(
-                color: Colors.redAccent,
-              ),
-            ),
-
-            ListTile(
-              title: Text('List'),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-
-            ListTile(
-              title: Text('Graph'),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-
-            ListTile(
-              title: Text('Date'),
-              onTap: () {
-                 Navigator.of(context).pop();
-              },
-            ),
-
-            ListTile(
-              title: Text('Calculator'),
-              onTap: () {
-                 Navigator.of(context).pop();
-              },
-            ),
-
-            ListTile(
-              title: Text('Alert'),
-              onTap: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+    return Container(
+          child: Scaffold(
+        appBar: AppBar(
+          title: Text("Expense"),
         ),
-      ),
-      appBar: AppBar(
-        title: Text("Expense"),
-      ),
-      body: SafeArea(
-        top: true,
-        bottom: true,
-        child: Form(
+         drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.all(2),
             children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.title),
-                  hintText: 'Title',
-                  labelText: 'Title',
+                DrawerHeader(
+                child: Text('Options'),
+                decoration: BoxDecoration(
+                  color: Colors.redAccent,
                 ),
               ),
-
-              // TextFormField(
-              //       decoration:  InputDecoration(
-              //         icon:  Icon(Icons.person),
-              //         hintText: 'Enter your name',
-              //         labelText: 'Name',
-              //       ),
-              //     ),
-
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'From',
-                  labelText: 'From',
-                ),
+              ListTile(
+                title: Text('List'),
+                onTap: () {
+                  // setState(() {
+                  //   TransactionList();
+                  // });
+                  Navigator.of(context).pop();
+                },
               ),
-
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.person),
-                  hintText: 'To',
-                  labelText: 'To',
-                ),
+              ListTile(
+                title: Text('Graph'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
               ),
+              // ListTile(
+              //   title: Text('Date'),
+              //   onTap: () {
 
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.calendar_today),
-                  hintText: 'Enter today\'s date',
-                ),
-                keyboardType: TextInputType.datetime,
-              ),
+              //     Navigator.of(context).pop();
+              //   },
+              // ),
+              ListTile(
+                title: Text('Calculator'),
+                onTap: () {
 
-              TextFormField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.attach_money),
-                  hintText: 'Cost',
-                  labelText: 'Cost',
-                ),
+                  Navigator.of(context).pop();
+                },
               ),
-              RaisedButton(
-                child: Text('Add'),
-                onPressed: () {
-                  TransactionList();
+              ListTile(
+                title: Text('Alert'),
+                onTap: () {
+                  Navigator.of(context).pop();
                 },
               ),
             ],
           ),
         ),
+        body: NewTransaction(),
       ),
     );
   }
